@@ -33,6 +33,12 @@ $(document).ready(
             $("#cutext-input").css("display", "none");
             $("#config-input").css("display", "block");
         });
+        $("#eventLogo").click(function () {
+          $("#eventlogo-input").css("display", "block");
+        });
+        $("#eventName").click(function () {
+          $("#eventlogo-input").css("display", "none");
+        });
 
         $("input[type=file], input[type=hidden], input[type=text], textarea").on("keyup change", function () {
             var csv = $("textarea[name='csv']").val();

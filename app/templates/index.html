@@ -12,6 +12,12 @@
                                 <a href="/guide" target="_blank">&nbsp;User Input Guide</a>
                             </li>
                         </ul>
+
+                          <label>Add event name</label>
+                          <section id="event-name-input">
+                            <input type="text" name="event_name">
+                          </section>
+
                         <label>Choose your Data Source</label>
                         <ul style="list-style-type:none">
                             <li>
@@ -82,6 +88,20 @@
 								</section>
 							</li>
                         </ul>
+                        <div id="error" class="no-data-error">Please select any one option!</div>
+                            <label>Use logo</label>
+                            <ul style="list-style-type:none">
+                              <li>
+                                  <input id="eventLogo" type="radio" name="event_logo" />Add event logo
+                                  <section id="eventlogo-input"  style="display:none;">
+                  									<label for="eventLogoFile">Upload a PNG file for event logo</label>
+                  									<input type="file" id="eventLogoFile" name="event_logo" accept="image/*" />
+                  								</section>
+                              </li>
+                              <li>
+                                <input id="eventName" type="radio" name="event_logo" />Use event name text
+                              </li>
+                            </ul>
                         <div id="error" class="no-image-error">Please select a default background or upload an image!</div>
                         <label>Customise Badges (Optional)</label>
                         <ul style="list-style-type:none">
