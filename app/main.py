@@ -67,6 +67,7 @@ def upload():
     csv = request.form['csv'].strip()
     img = request.form['img-default']
     text_on_image = request.form['text_on_image']
+    event_name = request.form['event_name']
     file = request.files['file']
 
     # If default background is selected
