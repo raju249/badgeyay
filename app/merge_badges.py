@@ -7,10 +7,11 @@ from cairosvg import svg2pdf
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p', dest='pdf', action='store_true')
+parser.add_argument('-e', dest="event_name", help="Event Name is required")
 parser.set_defaults(pdf=True)
 arguments = parser.parse_args()
 _pdf = arguments.pdf
-
+_event_name = arguments.event_name
 
 if subprocess.call(['which', 'python3']) != 0:
     raise PackageNotFoundError("Package python3 not found")
@@ -20,7 +21,7 @@ if subprocess.call(['which', 'pdftk']) != 0:
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
-subprocess.call(['python3', APP_ROOT + '/generate-badges.py'])
+subprocess.call(['python3', APP_ROOT + '/generate-badges.py', '-e', _event_name])
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
 
@@ -60,4 +61,3 @@ for folder in input_folders:
 
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
 subprocess.call('pdftk ' + BADGES_FOLDER + '/*.pdf cat output ' + final_path, shell=True)
-

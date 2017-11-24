@@ -33,8 +33,8 @@ def index():
     return render_template('index.html', default_background=default_background)
 
 
-def generate_badges(_pdf=True):
-    os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
+def generate_badges(event_name, _pdf=True):
+    os.system('python3 ' + APP_ROOT + '/merge_badges.py -p -e "' + event_name + '"')
 
 def empty_directory():
     """
@@ -136,7 +136,7 @@ def upload():
         filename = secure_filename(filename)
         if csv == '' and filename == img + ".csv":
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        generate_badges()
+        generate_badges(event_name)
 
         # Remove the uploaded files after job in done
         os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], filename))
