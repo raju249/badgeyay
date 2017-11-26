@@ -42,6 +42,7 @@ def generate_pdfs(folder_path):
         except Exception as e:
             pass
 
+
 # Generating PDF files from svg.
 if _pdf:
     for folder in input_folders:
